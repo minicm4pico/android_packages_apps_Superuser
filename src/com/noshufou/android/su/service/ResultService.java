@@ -115,6 +115,9 @@ public class ResultService extends IntentService {
                 allow == -1) {
             return;
         }
+        // If this is coming from the system
+        if (Util.getAppName(this, callerUid, false).equals("system"))
+            return;
         final String notificationMessage = getString(
                 allow==1?R.string.notification_text_allow:R.string.notification_text_deny,
                 Util.getAppName(this, callerUid, false));
